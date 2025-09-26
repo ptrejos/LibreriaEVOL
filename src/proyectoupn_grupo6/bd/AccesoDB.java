@@ -21,13 +21,13 @@ public class AccesoDB {
         Connection cn = null;
         // Parámetros de la base de datos
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=LIBRERIA";
+        String urlDB = "jdbc:sqlserver://localhost:1433;databaseName=LIBRERIA;encrypt=false;trustServerCertificate=true";
         String user = "u_ventas";
         String pass = "u_ventas";
         
         try {
             // Conexión con la BD
-            Class.forName(driver).newInstance();
+            Class.forName(driver).getDeclaredConstructor().newInstance();
             cn = DriverManager.getConnection(urlDB, user, pass);
         } catch (SQLException e) {
             throw e;
