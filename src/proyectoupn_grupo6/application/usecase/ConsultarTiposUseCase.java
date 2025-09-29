@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package application.usecase;
+package proyectoupn_grupo6.application.usecase;
 
-import application.dto.TipoDto;
-import application.dto.TipoMapper;
-import domain.entity.Tipo;
-import domain.service.TipoService;
+import proyectoupn_grupo6.application.dto.TipoDto;
+import proyectoupn_grupo6.application.dto.TipoMapper;
+import proyectoupn_grupo6.domain.entity.Tipo;
+import proyectoupn_grupo6.domain.service.TipoService;
 //import java.lang.System.Logger;
 import java.util.List;
 import java.util.Optional;

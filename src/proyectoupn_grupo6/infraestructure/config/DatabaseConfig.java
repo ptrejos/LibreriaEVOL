@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package infraestructure.config;
+package proyectoupn_grupo6.infraestructure.config;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -134,5 +136,42 @@ public class DatabaseConfig {
             );
         }
         return "Pool information not available";
+    }
+    
+    /**
+     * Obtiene una conexión del pool
+     * Este es el método principal que usa el Repository
+     * @return Connection del pool de HikariCP
+     * @throws SQLException Si hay error al obtener la conexión
+     */
+    public static Connection getConnection() throws SQLException {
+        try {
+            if (dataSource == null) {
+                throw new SQLException("DataSource no inicializado");
+            }
+            return dataSource.getConnection();
+        } catch (SQLException e) {
+            System.err.println("Error al obtener conexión: " + e.getMessage());
+            throw new SQLException("No se pudo obtener conexión de la base de datos", e);
+        }
+    }
+    
+    /**
+     * Verifica si la conexión a la base de datos funciona correctamente
+     * @return true si la conexión es exitosa, false si hay error
+     */
+    public static boolean testConnection() {
+        try (Connection conn = getConnection()) {
+            if (conn != null && !conn.isClosed()) {
+                System.out.println("Conexión a base de datos: OK");
+                return true;
+            } else {
+                System.err.println("Conexión a base de datos: FAILED (conexión cerrada)");
+                return false;
+            }
+        } catch (SQLException e) {
+            System.err.println("Conexión a base de datos: FAILED - " + e.getMessage());
+            return false;
+        }
     }
 }

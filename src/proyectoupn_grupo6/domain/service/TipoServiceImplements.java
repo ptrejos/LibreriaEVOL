@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package domain.service;
+package proyectoupn_grupo6.domain.service;
 
-import domain.entity.Tipo;
-import domain.repository.TipoRepository;
+import proyectoupn_grupo6.domain.entity.Tipo;
+import proyectoupn_grupo6.domain.repository.TipoRepository;
 import java.util.List;
 import java.util.Optional;
 
